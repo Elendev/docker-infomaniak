@@ -23,6 +23,6 @@ after_script:
 
 deploy:
   provider: script
-  script: sh ./docker_push.sh
+  script: sh "$TRAVIS_BUILD_DIR/docker_push.sh"
   on:
     branch: master
