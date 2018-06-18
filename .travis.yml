@@ -19,6 +19,7 @@ script:
 
 after_script:
   - docker images
+  - cd $TRAVIS_BUILD_DIR
 
 deploy:
   provider: script
