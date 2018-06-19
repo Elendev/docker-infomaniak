@@ -4,7 +4,8 @@ services:
   - docker
 
 env:
-  - VERSION=7.0-apache
+  - VERSION=7.0-apache PHP=7.0
+  - VERSION=7.1-apache PHP=7.1
 
 before_install:
  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
