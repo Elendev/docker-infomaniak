@@ -12,4 +12,9 @@ The Docker repository is here : https://hub.docker.com/r/elendev/infomaniak-php/
 
 ## Available environments
  * [PHP 7.0 with Apache](./7.0-apache)
+ * [PHP 7.0 with Apache (dev)](./7.0-apache-dev)
  * [PHP 7.1 with Apache](./7.1-apache)
+ * [PHP 7.1 with Apache (dev)](./7.1-apache-dev)
+
+### DEV environments
+Environments labelled with _-dev_ are environments with tools like `composer` or `xdebug` already installed. 
