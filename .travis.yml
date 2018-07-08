@@ -28,6 +28,6 @@ after_script:
 
 deploy:
   provider: script
-  script: sh "$TRAVIS_BUILD_DIR/docker_push.sh" $image && "$TRAVIS_BUILD_DIR/docker_push.sh" $imageDev
+  script: sh "$TRAVIS_BUILD_DIR/docker_push.sh" $image $imageDev
   on:
     branch: master
