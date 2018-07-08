@@ -12,7 +12,7 @@ before_install:
 
 before_script:
   - env | sort
-  - VERSION_DEV=${VERSION}-DEV
+  - VERSION_DEV=${VERSION}-dev
   - image="$DOCKER_USERNAME/infomaniak-php:$VERSION"
   - imageDev="$DOCKER_USERNAME/infomaniak-php:${VERSION_DEV}"
 
