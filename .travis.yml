@@ -5,20 +5,22 @@ services:
 
 env:
   - VERSION=7.0-apache PHP=7.0
-  - VERSION=7.0-apache-dev PHP=7.0
   - VERSION=7.1-apache PHP=7.1
-  - VERSION=7.1-apache-dev PHP=7.1
 
 before_install:
  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
 before_script:
   - env | sort
-  - cd $VERSION
+  - VERSION_DEV=${VERSION}-DEV
   - image="$DOCKER_USERNAME/infomaniak-php:$VERSION"
+  - imageDev="$DOCKER_USERNAME/infomaniak-php:${VERSION_DEV}"
 
 script:
+  - cd $TRAVIS_BUILD_DIR/$VERSION
   - travis_retry docker build -t "$image" .
+  - cd $TRAVIS_BUILD_DIR/$VERSION_DEV
+  - travis_retry docker build -t "$imageDev" .
 
 after_script:
   - docker images
@@ -26,6 +28,6 @@ after_script:
 
 deploy:
   provider: script
-  script: sh "$TRAVIS_BUILD_DIR/docker_push.sh" $image
+  script: sh "$TRAVIS_BUILD_DIR/docker_push.sh" $image && "$TRAVIS_BUILD_DIR/docker_push.sh" $imageDev
   on:
     branch: master
