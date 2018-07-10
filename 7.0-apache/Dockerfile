@@ -70,3 +70,7 @@ RUN docker-php-ext-configure imap --with-kerberos --with-imap-ssl && \
         xmlwriter \
         xsl \
         zip
+
+RUN echo 'memory_limit = 640M' >> /usr/local/etc/php/php.ini && \
+    echo 'post_max_size = 360M' >> /usr/local/etc/php/php.ini && \
+    echo 'upload_max_filesize = 360M' >> /usr/local/etc/php/php.ini
