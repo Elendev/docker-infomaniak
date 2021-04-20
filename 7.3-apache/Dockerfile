@@ -19,6 +19,7 @@ RUN apt-get update && \
         libtidy-dev \
         libxml2-dev \
         libxslt1-dev \
+        libzip-dev \
     && rm -rf /var/lib/apt/lists/*
 
 RUN pecl install mcrypt
@@ -76,3 +77,5 @@ RUN docker-php-ext-configure imap --with-kerberos --with-imap-ssl && \
 RUN echo 'memory_limit = 640M' >> /usr/local/etc/php/php.ini && \
     echo 'post_max_size = 360M' >> /usr/local/etc/php/php.ini && \
     echo 'upload_max_filesize = 360M' >> /usr/local/etc/php/php.ini
+
+RUN a2enmod rewrite
